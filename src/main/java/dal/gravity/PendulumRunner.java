@@ -24,13 +24,22 @@ public class PendulumRunner {
 		int iterations = (int) (1 / delta);
 		System.out.println("analytical vs. numerical displacement (fine, coarse)");
 		for (int second = 1; second <= 20; second++) {
+			if(second == 11){
+				System.out.println("Gravity changing... Set to Jupiter");
+				rp.setGravityModel();
+				rpCoarse.setGravityModel();
+				sp.setGravityModel();
+				}
 			for (int i = 0; i < iterations; i++)
 				rp.step();
-			for (int i = 0; i < 10; i++)
+			for (int i = 0; i < 10; i++){
 				rpCoarse.step();
+				
+			}
 			System.out.println("t=" + second + "s: \t" + nf.format(Math.toDegrees(sp.getTheta(second))) + "\t"
 					+ nf.format(Math.toDegrees(rp.getLastTheta())) + "\t"
 					+ nf.format(Math.toDegrees(rpCoarse.getLastTheta())));
+					
 		}
 	}
 }

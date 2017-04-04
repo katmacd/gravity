@@ -70,5 +70,11 @@ public abstract class AbstractPendulum {
 	public double getGravitationalField() {
 		return g;
 	}
+	
+	public GravityModel setGravityModel(){
+		
+			return daGM = new GravityConstant(25);
+			
+	}
 
 }
